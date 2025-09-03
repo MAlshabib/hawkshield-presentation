@@ -2,7 +2,7 @@
   "name": "HawkShield - Wi-Fi Intrusion Prevention System",
   "short_name": "HawkShield",
   "description": "AI-powered real-time Wi-Fi defense system with machine learning-based threat detection",
-  "start_url": "/",
+  "start_url": "https://hawkshield.malshabib.dev/",
   "display": "standalone",
   "background_color": "#08245c",
   "theme_color": "#22d3ee",
