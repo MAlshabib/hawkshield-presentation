@@ -18,6 +18,7 @@ const orbitron = Orbitron({
 })
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://hawkshield.malshabib.dev'),
   title: "HawkShield - Wi-Fi Intrusion Prevention System",
   description: "AI-powered real-time Wi-Fi defense system with machine learning-based threat detection and automated response. Experience the future of network security with 98%+ accuracy.",
   keywords: ["Wi-Fi security", "intrusion prevention", "AI", "machine learning", "network security", "cybersecurity", "HawkShield"],
@@ -45,7 +46,7 @@ export const metadata: Metadata = {
     siteName: "HawkShield",
     images: [
       {
-        url: "/logo.jpg",
+        url: "https://hawkshield.malshabib.dev/logo.jpg",
         width: 1200,
         height: 630,
         alt: "HawkShield - Wi-Fi Intrusion Prevention System",
@@ -59,7 +60,7 @@ export const metadata: Metadata = {
     creator: "@malshabib",
     title: "HawkShield - AI-Powered Wi-Fi Security",
     description: "Revolutionary AI-powered Wi-Fi defense system with 98%+ accuracy and <1s response time. Experience the future of network security.",
-    images: ["/logo.jpg"],
+    images: ["https://hawkshield.malshabib.dev/logo.jpg"],
   },
   robots: {
     index: true,
