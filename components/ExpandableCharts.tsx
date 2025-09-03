@@ -15,10 +15,10 @@ import {
 ────────────────────────────────── */
 function StatCard({ title, value, subtitle }: { title: string; value: string; subtitle?: string }) {
   return (
-    <div className="rounded-xl border border-cyan-500/30 bg-slate-900/40 px-5 py-4 text-center">
-      <div className="text-sm text-slate-400">{title}</div>
-      <div className="mt-1 text-2xl font-semibold text-cyan-400">{value}</div>
-      {subtitle ? <div className="mt-1 text-xs text-slate-400">{subtitle}</div> : null}
+    <div className="rounded-xl border border-cyan-500/30 bg-slate-900/40 px-3 sm:px-5 py-3 sm:py-4 text-center min-w-0">
+      <div className="text-xs sm:text-sm text-slate-400 break-words">{title}</div>
+      <div className="mt-1 text-lg sm:text-2xl font-semibold text-cyan-400 break-words">{value}</div>
+      {subtitle ? <div className="mt-1 text-[10px] sm:text-xs text-slate-400 break-words">{subtitle}</div> : null}
     </div>
   )
 }
@@ -312,37 +312,37 @@ export default function ExpandableCharts() {
     ) : null
 
   return (
-    <div className="space-y-10 pb-24 overflow-auto">
+    <div className="space-y-6 sm:space-y-10 pb-12 sm:pb-24 overflow-auto w-full">
       {SummaryCards}
 
       {/* sentence takeaway */}
-      <div className="text-center text-sm text-slate-300/90">
+      <div className="text-center text-xs sm:text-sm text-slate-300/90 px-4">
         LightGBM achieves sub-second detection with the best trade-off between accuracy and speed — ideal for real-time IPS.
       </div>
 
       {/* Why + Training details (always visible) */}
-      <div className="grid md:grid-cols-2 gap-4">
-        <div className="rounded-xl border border-cyan-500/20 bg-slate-900/30 px-5 py-4">
-          <div className="mb-2 flex items-center gap-2 text-cyan-300 font-semibold">
-            <BrainCircuit className="w-4 h-4" /> Why LightGBM?
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-3 sm:gap-4">
+        <div className="rounded-xl border border-cyan-500/20 bg-slate-900/30 px-3 sm:px-5 py-3 sm:py-4">
+          <div className="mb-2 flex items-center gap-2 text-cyan-300 font-semibold text-sm sm:text-base">
+            <BrainCircuit className="w-3 h-3 sm:w-4 sm:h-4 flex-shrink-0" /> Why LightGBM?
           </div>
-          <ul className="text-sm leading-relaxed text-slate-300 list-disc ml-5">
+          <ul className="text-xs sm:text-sm leading-relaxed text-slate-300 list-disc ml-4 sm:ml-5 space-y-1">
             <li>High accuracy with tabular, high-dim features (no GPU required).</li>
             <li>Fast inference on edge (&lt;1s) with small memory footprint.</li>
             <li>Robust to noise and class imbalance with proper tuning.</li>
           </ul>
-          <div className="mt-3 text-xs text-slate-400">
+          <div className="mt-3 text-[10px] sm:text-xs text-slate-400 break-words">
             Alternatives: <span className="font-medium text-slate-300">One-Class SVM / Isolation Forest</span> → high false positives;
             <span className="font-medium text-slate-300"> Neural Nets</span> → 2–3s latency on edge + higher training cost.
           </div>
         </div>
 
         {/* Training Details card (static) */}
-        <div className="rounded-xl border border-cyan-500/20 bg-slate-900/30 px-5 py-4">
-          <div className="mb-2 flex items-center justify-between text-cyan-300 font-semibold">
+        <div className="rounded-xl border border-cyan-500/20 bg-slate-900/30 px-3 sm:px-5 py-3 sm:py-4">
+          <div className="mb-2 flex items-center justify-between text-cyan-300 font-semibold text-sm sm:text-base">
             <span>Training Details</span>
           </div>
-          <div className="mt-1 grid grid-cols-2 gap-3 text-sm">
+          <div className="mt-1 grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-3 text-sm">
             <StatCard title="Dataset Split" value="70 / 15 / 15" subtitle="Train / Val / Test" />
             <StatCard title="Features Used" value="31" subtitle="after preprocessing" />
             <StatCard title="Device" value="Raspberry Pi" subtitle="edge inference" />

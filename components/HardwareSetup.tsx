@@ -34,7 +34,7 @@ function SmartImage({
         alt={alt}
         width={width}
         height={height}
-        className="w-full h-[240px] object-contain"
+        className="w-full h-auto sm:h-[240px] object-contain"
         priority
         sizes="(max-width: 768px) 100vw, 560px"
         onLoad={() => {
@@ -71,19 +71,19 @@ function SmartImage({
 /* ---------------- Small UI bits ---------------- */
 function StatChip({ icon: Icon, label, value }: { icon: any; label: string; value: string }) {
   return (
-    <div className="flex items-center gap-2 rounded-lg border border-cyan-500/30 bg-slate-900/40 px-3 py-2">
-      <Icon className="h-4 w-4 text-cyan-300" />
-      <div className="text-xs text-slate-300">{label}</div>
-      <div className="ml-auto text-sm font-semibold text-cyan-200">{value}</div>
+    <div className="flex items-center gap-2 rounded-lg border border-cyan-500/30 bg-slate-900/40 px-2 sm:px-3 py-2 min-w-0">
+      <Icon className="h-3 w-3 sm:h-4 sm:w-4 text-cyan-300 flex-shrink-0" />
+      <div className="text-[10px] sm:text-xs text-slate-300 min-w-0 break-words">{label}</div>
+      <div className="ml-auto text-xs sm:text-sm font-semibold text-cyan-200 flex-shrink-0">{value}</div>
     </div>
   )
 }
 
 function SpecRow({ k, v }: { k: string; v: string }) {
   return (
-    <div className="flex items-center justify-between text-sm">
-      <span className="text-slate-300">{k}</span>
-      <span className="text-slate-200">{v}</span>
+    <div className="flex items-center justify-between text-xs sm:text-sm">
+      <span className="text-slate-300 break-words min-w-0">{k}</span>
+      <span className="text-slate-200 break-words ml-2 text-right">{v}</span>
     </div>
   )
 }
@@ -98,19 +98,19 @@ export default function HardwareSetup() {
   const cost    = "Low-cost"
 
   return (
-    <div className="space-y-8 pb-16">
+    <div className="space-y-6 sm:space-y-8 pb-8 sm:pb-16 w-full">
       {/* العنوان + سويتش الوضع */}
       <div className="flex flex-wrap items-center justify-between gap-3">
-        <h2 className="text-2xl font-semibold text-cyan-300">Hardware Setup</h2>
+        <h2 className="text-lg sm:text-2xl font-semibold text-cyan-300 break-words">Hardware Setup</h2>
         <div className="inline-flex overflow-hidden rounded-lg border border-cyan-500/30">
           <button
-            className={`px-3 py-1.5 text-sm ${mode==="bench" ? "bg-cyan-400/15 text-cyan-300" : "text-slate-300 hover:bg-cyan-400/10"}`}
+            className={`px-2 sm:px-3 py-1.5 text-xs sm:text-sm min-h-[40px] ${mode==="bench" ? "bg-cyan-400/15 text-cyan-300" : "text-slate-300 hover:bg-cyan-400/10"}`}
             onClick={() => setMode("bench")}
           >
             Bench
           </button>
           <button
-            className={`px-3 py-1.5 text-sm ${mode==="live" ? "bg-cyan-400/15 text-cyan-300" : "text-slate-300 hover:bg-cyan-400/10"}`}
+            className={`px-2 sm:px-3 py-1.5 text-xs sm:text-sm min-h-[40px] ${mode==="live" ? "bg-cyan-400/15 text-cyan-300" : "text-slate-300 hover:bg-cyan-400/10"}`}
             onClick={() => setMode("live")}
           >
             Live
@@ -126,14 +126,14 @@ export default function HardwareSetup() {
       </div>
 
       {/* بطاقتا الأجهزة + المخطط */}
-      <div className="grid lg:grid-cols-[1fr_auto_1fr] items-center gap-6">
+      <div className="grid grid-cols-1 lg:grid-cols-[1fr_auto_1fr] items-center gap-4 sm:gap-6">
         {/* Raspberry Pi */}
         <motion.div
           initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }}
-          className="rounded-2xl border border-cyan-500/30 bg-slate-900/40 p-4"
+          className="rounded-2xl border border-cyan-500/30 bg-slate-900/40 p-3 sm:p-4"
         >
           <div className="flex items-center gap-2 text-cyan-300 mb-3">
-            <Cpu className="h-4 w-4" /> <span className="font-semibold">Raspberry Pi (Edge)</span>
+            <Cpu className="h-3 w-3 sm:h-4 sm:w-4 flex-shrink-0" /> <span className="font-semibold text-sm sm:text-base">Raspberry Pi (Edge)</span>
           </div>
 
           <div className="rounded-xl overflow-hidden border border-slate-700/50 mb-4 bg-slate-900/50">
@@ -145,7 +145,7 @@ export default function HardwareSetup() {
             />
           </div>
 
-          <div className="space-y-2">
+          <div className="space-y-1.5 sm:space-y-2">
             <SpecRow k="CPU"     v="Quad-core (ARM)" />
             <SpecRow k="RAM"     v="2–4 GB" />
             <SpecRow k="OS"      v="Linux (32/64-bit)" />

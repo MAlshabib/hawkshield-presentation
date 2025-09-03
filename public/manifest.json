@@ -1,0 +1,57 @@
+{
+  "name": "HawkShield - Wi-Fi Intrusion Prevention System",
+  "short_name": "HawkShield",
+  "description": "AI-powered real-time Wi-Fi defense system with machine learning-based threat detection",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#08245c",
+  "theme_color": "#22d3ee",
+  "orientation": "any",
+  "categories": ["security", "productivity", "utilities"],
+  "lang": "en",
+  "dir": "ltr",
+  "icons": [
+    {
+      "src": "/logo.jpg",
+      "sizes": "192x192",
+      "type": "image/jpeg",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/logo.jpg", 
+      "sizes": "512x512",
+      "type": "image/jpeg",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/logo.jpg",
+      "sizes": "256x256", 
+      "type": "image/jpeg",
+      "purpose": "any"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "/logo.jpg",
+      "sizes": "1280x720",
+      "type": "image/jpeg",
+      "form_factor": "wide",
+      "label": "HawkShield System Architecture"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "View Presentation",
+      "short_name": "Presentation",
+      "description": "View the HawkShield presentation",
+      "url": "/",
+      "icons": [
+        {
+          "src": "/logo.jpg",
+          "sizes": "96x96",
+          "type": "image/jpeg"
+        }
+      ]
+    }
+  ]
+}

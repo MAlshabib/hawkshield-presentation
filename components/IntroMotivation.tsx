@@ -5,6 +5,7 @@ import {
   Wifi, ShieldAlert, Zap, BrainCircuit, ChevronRight, BarChart3
 } from "lucide-react"
 import { useMemo } from "react"
+import { useIsMobile } from "@/hooks/use-mobile"
 
 /* typing cursor */
 const Cursor = () => (
@@ -12,6 +13,8 @@ const Cursor = () => (
 )
 
 export default function IntroMotivation() {
+  const isMobile = useIsMobile()
+  
   // stagger helpers
   const item = {
     hidden: { opacity: 0, y: 8 },

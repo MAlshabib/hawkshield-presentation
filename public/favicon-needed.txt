@@ -1,0 +1,4 @@
+# Favicon needed
+# You need to create /public/favicon.ico
+# Use your logo.jpg and convert it to .ico format
+# Recommended sizes: 16x16, 32x32, 48x48 pixels

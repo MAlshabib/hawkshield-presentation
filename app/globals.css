@@ -3,6 +3,156 @@
 
 @custom-variant dark (&:is(.dark *));
 
+/* Mobile viewport fix */
+@supports (height: 100dvh) {
+  .min-h-screen {
+    min-height: 100dvh;
+  }
+  .h-screen {
+    height: 100dvh;
+  }
+}
+
+/* Prevent content overflow on mobile */
+@media (max-width: 767px) {
+  body {
+    overflow-x: hidden;
+  }
+  
+  /* Ensure content doesn't exceed viewport */
+  .print-slide {
+    max-height: calc(100vh - 8rem);
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  
+  /* Fix for iOS Safari bottom bar */
+  @supports (-webkit-touch-callout: none) {
+    .min-h-screen {
+      min-height: -webkit-fill-available;
+    }
+    .h-screen {
+      height: -webkit-fill-available;
+    }
+  }
+}
+
+/* Better scrollbar styling */
+.print-slide::-webkit-scrollbar {
+  width: 4px;
+}
+
+.print-slide::-webkit-scrollbar-track {
+  background: rgba(51, 65, 85, 0.3);
+  border-radius: 2px;
+}
+
+.print-slide::-webkit-scrollbar-thumb {
+  background: rgba(34, 211, 238, 0.5);
+  border-radius: 2px;
+}
+
+.print-slide::-webkit-scrollbar-thumb:hover {
+  background: rgba(34, 211, 238, 0.7);
+}
+
+/* Better text sizing for mobile */
+.orbitron {
+  font-family: var(--font-orbitron);
+  font-feature-settings: "kern" 1, "liga" 1;
+}
+
+/* Mobile-optimized font sizes and spacing */
+@media (max-width: 767px) {
+  .text-balance {
+    text-wrap: balance;
+  }
+  
+  /* Ensure readability on small screens */
+  .print-slide {
+    font-size: clamp(14px, 3.5vw, 18px);
+    line-height: 1.6;
+  }
+  
+  /* Better spacing on mobile */
+  .space-y-6 > * + * {
+    margin-top: 1rem;
+  }
+  
+  .space-y-4 > * + * {
+    margin-top: 0.75rem;
+  }
+  
+  /* Mobile typography scale */
+  h1 { font-size: clamp(1.5rem, 5vw, 2.5rem); }
+  h2 { font-size: clamp(1.25rem, 4vw, 2rem); }
+  h3 { font-size: clamp(1.125rem, 3.5vw, 1.5rem); }
+  
+  /* Optimize touch interactions */
+  button, [role="button"], .cursor-pointer {
+    min-height: 44px;
+    min-width: 44px;
+    touch-action: manipulation;
+  }
+  
+  /* Prevent zoom on form inputs */
+  input, select, textarea {
+    font-size: 16px;
+  }
+}
+
+/* Tablet optimizations */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .print-slide {
+    font-size: clamp(16px, 2.5vw, 20px);
+  }
+}
+
+/* Desktop optimizations */
+@media (min-width: 1024px) {
+  .print-slide {
+    font-size: clamp(18px, 1.5vw, 24px);
+  }
+}
+
+/* Performance optimizations for mobile */
+@media (max-width: 767px) {
+  /* Reduce motion for better performance */
+  @media (prefers-reduced-motion: no-preference) {
+    .motion-reduce-on-mobile {
+      animation-duration: 0.15s;
+      transition-duration: 0.15s;
+    }
+  }
+  
+  /* Optimize scrolling */
+  * {
+    -webkit-overflow-scrolling: touch;
+  }
+  
+  /* Better touch scrolling */
+  .overflow-auto, .overflow-y-auto {
+    overscroll-behavior: contain;
+  }
+}
+
+/* Safe area support for notched devices */
+.safe-area-top {
+  padding-top: max(1rem, env(safe-area-inset-top));
+}
+
+.safe-area-bottom {
+  padding-bottom: max(1rem, env(safe-area-inset-bottom));
+}
+
+.safe-area-left {
+  padding-left: max(1rem, env(safe-area-inset-left));
+}
+
+.safe-area-right {
+  padding-right: max(1rem, env(safe-area-inset-right));
+}
+
 :root {
   --background: oklch(1 0 0);
   --foreground: oklch(0.145 0 0);
@@ -125,5 +275,61 @@
   .text-blue-400,
   .text-green-400 {
     color: black !important;
+  }
+}
+
+/* Mobile responsiveness enhancements */
+@media (max-width: 768px) {
+  /* Reduce animations on mobile for better performance */
+  @media (prefers-reduced-motion) {
+    * {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+
+  /* Ensure text is always readable */
+  .text-balance {
+    text-wrap: balance;
+  }
+  
+  /* Prevent horizontal overflow */
+  body, html {
+    overflow-x: hidden;
+  }
+  
+  /* Better touch targets */
+  button, a, [role="button"] {
+    min-height: 40px;
+    min-width: 40px;
+  }
+  
+  /* Responsive images */
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+}
+
+/* Reduce blur effects on mobile for performance */
+@media (max-width: 640px) {
+  .backdrop-blur-md {
+    backdrop-filter: blur(4px);
+  }
+  
+  .backdrop-blur-sm {
+    backdrop-filter: blur(2px);
+  }
+}
+
+/* Safe area insets for modern mobile devices */
+@supports (padding: env(safe-area-inset-top)) {
+  .pt-safe {
+    padding-top: env(safe-area-inset-top);
+  }
+  
+  .pb-safe {
+    padding-bottom: env(safe-area-inset-bottom);
   }
 }

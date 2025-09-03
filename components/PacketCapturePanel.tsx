@@ -43,16 +43,16 @@ function StatCard({
     <motion.div
       initial={{ opacity: 0, y: 10 }}
       animate={{ opacity: 1, y: 0, transition: { delay } }}
-      className="rounded-xl border border-cyan-500/30 bg-slate-900/40 p-5"
+      className="rounded-xl border border-cyan-500/30 bg-slate-900/40 p-3 sm:p-5 min-w-0"
     >
-      <div className="flex items-center gap-3">
-        <div className="rounded-lg border border-cyan-500/40 bg-cyan-400/10 p-2">
-          <Icon className="h-5 w-5 text-cyan-300" />
+      <div className="flex items-center gap-2 sm:gap-3">
+        <div className="rounded-lg border border-cyan-500/40 bg-cyan-400/10 p-1.5 sm:p-2 flex-shrink-0">
+          <Icon className="w-4 h-4 sm:w-5 sm:h-5 text-cyan-300" />
         </div>
-        <div className="text-sm text-slate-300">{label}</div>
+        <div className="text-xs sm:text-sm text-slate-300 min-w-0 break-words">{label}</div>
       </div>
-      <div className="mt-2 text-3xl font-semibold text-cyan-300">{value}</div>
-      {sub ? <div className="mt-1 text-xs text-slate-400">{sub}</div> : null}
+      <div className="mt-2 text-2xl sm:text-3xl font-semibold text-cyan-300 break-words">{value}</div>
+      {sub ? <div className="mt-1 text-[10px] sm:text-xs text-slate-400 break-words">{sub}</div> : null}
     </motion.div>
   )
 }
@@ -68,9 +68,9 @@ function StackedBar({
 }) {
   const rightPct = Math.max(0, 100 - leftPct)
   return (
-    <div className="rounded-xl border border-cyan-500/20 bg-slate-900/30 p-5">
-      <div className="mb-2 text-sm font-medium text-cyan-200">Class Balance</div>
-      <div className="h-6 w-full overflow-hidden rounded-md bg-slate-800">
+    <div className="rounded-xl border border-cyan-500/20 bg-slate-900/30 p-3 sm:p-5">
+      <div className="mb-2 text-xs sm:text-sm font-medium text-cyan-200">Class Balance</div>
+      <div className="h-4 sm:h-6 w-full overflow-hidden rounded-md bg-slate-800">
         <motion.div
           initial={{ width: 0 }}
           animate={{ width: `${leftPct}%` }}
@@ -79,11 +79,11 @@ function StackedBar({
           title={`${leftLabel} ~${leftPct}%`}
         />
       </div>
-      <div className="mt-2 flex justify-between text-xs text-slate-300">
-        <span>
+      <div className="mt-2 flex justify-between text-[10px] sm:text-xs text-slate-300">
+        <span className="break-words">
           <span className="text-cyan-300">{leftLabel}</span> ~{leftPct}%
         </span>
-        <span>
+        <span className="break-words">
           <span className="text-slate-300">{rightLabel}</span> ~{rightPct}%
         </span>
       </div>
@@ -115,9 +115,9 @@ export default function PacketCapturePanel() {
   )
 
   return (
-    <div className="space-y-8">
+    <div className="space-y-6 sm:space-y-8 w-full">
       {/* بطاقات الأرقام */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
         <StatCard
           icon={Database}
           label="Total Samples"
@@ -160,7 +160,7 @@ export default function PacketCapturePanel() {
       <StackedBar leftPct={normalPct} leftLabel="Normal" rightLabel="Attack" />
 
       {/* Key Facts chips */}
-      <div className="rounded-xl border border-cyan-500/20 bg-slate-900/30 p-4">
+      <div className="rounded-xl border border-cyan-500/20 bg-slate-900/30 p-3 sm:p-4">
         <div className="mb-2 text-sm font-medium text-cyan-200">Key Facts</div>
         <div className="flex flex-wrap gap-2">
           {chips.map((c, i) => (
@@ -169,7 +169,7 @@ export default function PacketCapturePanel() {
               initial={{ opacity: 0, y: 6 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.05 * i, duration: 0.25 }}
-              className="rounded-full border border-cyan-500/30 bg-cyan-400/10 px-3 py-1 text-xs text-slate-200"
+              className="rounded-full border border-cyan-500/30 bg-cyan-400/10 px-2 sm:px-3 py-1 text-xs text-slate-200 min-w-0 break-words"
               title={`${c.k}: ${c.v}`}
             >
               <span className="text-cyan-300">{c.k}</span>
@@ -180,7 +180,7 @@ export default function PacketCapturePanel() {
         </div>
       </div>
 
-      <div className="text-center text-[11px] text-slate-400">
+      <div className="text-center text-[10px] sm:text-[11px] text-slate-400 px-2">
         Tip: numbers animate once to highlight scale; class balance bar reflects relative proportions.
       </div>
     </div>

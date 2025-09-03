@@ -230,12 +230,12 @@ const ZoomArchitecture = forwardRef<ZoomArchitectureRef, ZoomArchitectureProps>(
     }
 
     return (
-      <div className="relative w-full h-full flex items-center justify-center">
+      <div className="relative w-full h-full flex items-center justify-center px-4 py-8">
         <AnimatePresence mode="wait">
           {view === "overview" ? (
             <motion.div
               key="overview"
-              className="flex items-center space-x-8"
+              className="flex flex-col md:flex-row items-center justify-center space-y-4 md:space-y-0 md:space-x-4 lg:space-x-8 w-full max-w-6xl mx-auto"
               initial={{ opacity: 0, scale: 0.8 }}
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0.8 }}
@@ -244,24 +244,25 @@ const ZoomArchitecture = forwardRef<ZoomArchitectureRef, ZoomArchitectureProps>(
               {modules.map((module, index) => {
                 const Icon = module.icon
                 return (
-                  <div key={module.id} className="flex items-center">
+                  <div key={module.id} className="flex flex-col md:flex-row items-center justify-center w-full md:w-auto">
                     <motion.div
-                      className="relative group cursor-pointer"
-                      whileHover={{ scale: 1.1 }}
+                      className="relative group cursor-pointer w-full md:w-auto flex-shrink-0"
+                      whileHover={{ scale: 1.03 }}
                       onClick={() => handleModuleClick(module.id)}
+                      style={{ transformOrigin: "center" }}
                     >
-                      <div className="w-32 h-32 bg-gradient-to-br from-cyan-500/20 to-blue-600/20 rounded-xl border border-cyan-400/30 flex flex-col items-center justify-center p-4 group-hover:border-cyan-400/60 transition-all duration-300">
-                        <Icon className="w-8 h-8 text-cyan-400 mb-2" />
-                        <span className="text-sm text-center text-gray-300 font-medium">{module.name}</span>
-                        <span className="text-xs text-center text-gray-400 mt-1">{module.description}</span>
+                      <div className="w-full md:w-28 lg:w-36 h-28 md:h-28 lg:h-36 bg-gradient-to-br from-cyan-500/20 to-blue-600/20 rounded-xl border border-cyan-400/30 flex flex-col items-center justify-center p-3 md:p-4 group-hover:border-cyan-400/60 transition-all duration-300 min-h-[100px] relative z-10">
+                        <Icon className="w-6 h-6 md:w-7 md:h-7 lg:w-9 lg:h-9 text-cyan-400 mb-1 md:mb-2 flex-shrink-0" />
+                        <span className="text-xs md:text-sm text-center text-gray-300 font-medium break-words leading-tight">{module.name}</span>
+                        <span className="text-[10px] md:text-xs text-center text-gray-400 mt-0.5 md:mt-1 break-words hidden sm:block leading-tight">{module.description}</span>
                       </div>
-                      <div className="absolute inset-0 bg-cyan-400/10 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                      <div className="absolute inset-0 bg-cyan-400/10 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
                     </motion.div>
                     {index < modules.length - 1 && (
                       <motion.div
-                        className="w-8 h-0.5 bg-gradient-to-r from-cyan-400 to-blue-500 mx-4"
-                        initial={{ scaleX: 0 }}
-                        animate={{ scaleX: 1 }}
+                        className="w-1 h-8 md:w-8 lg:w-12 md:h-1 bg-gradient-to-b md:bg-gradient-to-r from-cyan-400 to-blue-500 my-3 md:my-0 md:mx-3 lg:mx-6 hidden sm:block flex-shrink-0"
+                        initial={{ scaleX: 0, scaleY: 0 }}
+                        animate={{ scaleX: 1, scaleY: 1 }}
                         transition={{ delay: index * 0.2 }}
                       />
                     )}
@@ -278,15 +279,16 @@ const ZoomArchitecture = forwardRef<ZoomArchitectureRef, ZoomArchitectureProps>(
               exit={{ opacity: 0, scale: 0.9 }}
               transition={{ duration: 0.3 }}
             >
-              <div className="absolute top-4 left-4 z-10">
+              <div className="absolute top-2 sm:top-4 left-2 sm:left-4 z-10">
                 <Button
                   variant="outline"
                   size="sm"
                   onClick={handleBackToOverview}
-                  className="bg-slate-800/80 border-slate-600 hover:bg-slate-700"
+                  className="bg-slate-800/80 border-slate-600 hover:bg-slate-700 text-xs sm:text-sm min-h-[40px]"
                 >
-                  <ArrowLeft className="w-4 h-4 mr-2" />
-                  Back to Architecture
+                  <ArrowLeft className="w-3 h-3 sm:w-4 sm:h-4 mr-1 sm:mr-2" />
+                  <span className="hidden sm:inline">Back to Architecture</span>
+                  <span className="sm:hidden">Back</span>
                 </Button>
               </div>
               <div className="pt-16">

@@ -44,8 +44,8 @@ const teamMembers = [
 export default function TeamCards() {
   return (
     <div className="w-full">
-      <h3 className="text-xl font-semibold mb-6 text-cyan-400 text-center">Team & Roles</h3>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+      <h3 className="text-lg sm:text-xl font-semibold mb-4 sm:mb-6 text-cyan-400 text-center">Team & Roles</h3>
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4">
         {teamMembers.map((member, index) => (
           <motion.div
             key={member.name}
@@ -53,14 +53,14 @@ export default function TeamCards() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: index * 0.1 }}
             whileHover={{ scale: 1.02 }}
-            className={`p-6 rounded-lg border-2 ${member.color} ${member.bgColor} bg-slate-900/50 transition-all duration-300 cursor-pointer`}
+            className={`p-4 sm:p-6 rounded-lg border-2 ${member.color} ${member.bgColor} bg-slate-900/50 transition-all duration-300 cursor-pointer min-w-0`}
           >
             <div className="flex flex-col items-center text-center">
-              <div className="mb-4 p-3 rounded-full bg-slate-800/50">
-                <member.icon className="w-8 h-8 text-cyan-400" />
+              <div className="mb-3 sm:mb-4 p-2 sm:p-3 rounded-full bg-slate-800/50">
+                <member.icon className="w-6 h-6 sm:w-8 sm:h-8 text-cyan-400" />
               </div>
-              <h4 className="font-bold text-lg text-cyan-300 mb-2">{member.name}</h4>
-              <p className="text-sm text-slate-400 leading-relaxed">{member.role}</p>
+              <h4 className="font-bold text-base sm:text-lg text-cyan-300 mb-1 sm:mb-2 break-words">{member.name}</h4>
+              <p className="text-xs sm:text-sm text-slate-400 leading-relaxed break-words">{member.role}</p>
             </div>
           </motion.div>
         ))}

@@ -1,7 +1,6 @@
 "use client"
 import IntroMotivation from "./IntroMotivation"
 import ProblemStatement from "./ProblemStatement"
-
 import HardwareSetup from "./HardwareSetup"
 import ImpactValue from "./ImpactValue"
 import { motion } from "framer-motion"
@@ -23,6 +22,7 @@ import ExpandableCharts from "./ExpandableCharts"
 import RAGSystemDiagram from "./RAGSystemDiagram"
 import ScopeEthics from "./ScopeEthics"
 import { Database, Shield, Eye, Cpu, Brain } from "lucide-react"
+import { useIsMobile } from "@/hooks/use-mobile"
 
 interface SlideProps {
   slide: SlideData
@@ -34,6 +34,7 @@ interface SlideProps {
 
 export default function Slide({ slide, zoomArchitectureRef, onDrillChange }: SlideProps) {
   const [overrideTitle, setOverrideTitle] = useState<string | undefined>()
+  const isMobile = useIsMobile()
 
   useEffect(() => {
     // Reset title when slide unmounts or changes
@@ -221,16 +222,16 @@ export default function Slide({ slide, zoomArchitectureRef, onDrillChange }: Sli
 
       case "toc":
         return (
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-6 mt-12">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4 md:gap-6 mt-4 sm:mt-6 md:mt-8 lg:mt-12 max-h-[60vh] overflow-y-auto">
             {slide.points?.map((point, index) => (
               <motion.div
                 key={index}
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: index * 0.05 }}
-                className="p-6 rounded-lg border border-cyan-500/30 bg-slate-900/50 hover:bg-cyan-500/10 transition-colors cursor-pointer text-center min-h-[80px] flex items-center justify-center"
+                className="p-3 sm:p-4 md:p-6 rounded-lg border border-cyan-500/30 bg-slate-900/50 hover:bg-cyan-500/10 transition-colors cursor-pointer text-center min-h-[60px] sm:min-h-[70px] md:min-h-[80px] flex items-center justify-center"
               >
-                <div className="text-lg text-slate-300 font-medium">{point}</div>
+                <div className="text-xs sm:text-sm md:text-base lg:text-lg text-slate-300 font-medium leading-tight">{point}</div>
               </motion.div>
             ))}
           </div>
@@ -362,19 +363,24 @@ export default function Slide({ slide, zoomArchitectureRef, onDrillChange }: Sli
 
   if (slide.type === "cover") {
     return (
-      <div className="text-center max-w-4xl mx-auto print-slide">
+      <div className="text-center max-w-4xl mx-auto print-slide px-3 sm:px-4">
         <motion.div
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.5 }}
+          className="flex flex-col items-center justify-center min-h-[60vh]"
         >
-          <div className="hs-hero" />
-          <motion.div variants={containerVariants} initial="hidden" animate="visible" className="mt-8 space-y-6">
+          <div className={`hs-hero ${isMobile ? 'scale-[0.4] sm:scale-50 md:scale-75' : 'scale-75 lg:scale-100'}`} />
+          <motion.div variants={containerVariants} initial="hidden" animate="visible" className="mt-2 sm:mt-4 md:mt-6 lg:mt-8 space-y-3 sm:space-y-4 md:space-y-6">
             {slide.points?.map((point, index) => (
               <motion.div
                 key={index}
                 variants={itemVariants}
-                className={index === 0 ? "text-4xl font-bold text-cyan-400 orbitron" : "text-xl text-slate-300"}
+                className={
+                  index === 0 
+                    ? "text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl font-bold text-cyan-400 orbitron leading-tight" 
+                    : "text-sm sm:text-base md:text-lg lg:text-xl text-slate-300"
+                }
               >
                 {point}
               </motion.div>
@@ -432,7 +438,7 @@ export default function Slide({ slide, zoomArchitectureRef, onDrillChange }: Sli
             Questions & Answers
           </motion.h1>
           <div className="hs-hero scale-75" />
-          <motion.p
+                    <motion.p
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.5 }}
@@ -446,25 +452,25 @@ export default function Slide({ slide, zoomArchitectureRef, onDrillChange }: Sli
   }
 
   return (
-    <div className="max-w-5xl mx-auto print-slide">
+    <div className="w-full max-w-7xl mx-auto print-slide px-3 sm:px-4 md:px-6 lg:px-8 py-4 sm:py-6 max-h-[calc(100vh-8rem)] overflow-y-auto">
       <motion.h1
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
-        className="text-3xl font-bold text-cyan-400 mb-12 text-center orbitron"
+        className="text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl font-bold text-cyan-400 mb-4 sm:mb-6 md:mb-8 lg:mb-12 text-center orbitron leading-tight"
       >
         {overrideTitle ?? slide.title}
       </motion.h1>
 
       {slide.interactive ? (
-        <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.3 }}>
+        <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.3 }} className="overflow-hidden">
           {renderInteractiveContent()}
         </motion.div>
       ) : (
-        <motion.div variants={containerVariants} initial="hidden" animate="visible" className="space-y-6">
+        <motion.div variants={containerVariants} initial="hidden" animate="visible" className="space-y-3 sm:space-y-4 md:space-y-6 lg:space-y-8">
           {slide.points?.map((point, index) => (
-            <motion.div key={index} variants={itemVariants} className="flex items-start gap-4 group">
-              <div className="w-2 h-2 rounded-full bg-cyan-400 mt-3 flex-shrink-0 group-hover:bg-blue-400 transition-colors" />
-              <div className="text-lg text-slate-300 leading-relaxed text-balance">{point}</div>
+            <motion.div key={index} variants={itemVariants} className="flex items-start gap-2 sm:gap-3 md:gap-4 group">
+              <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-cyan-400 mt-2 sm:mt-2.5 md:mt-3 flex-shrink-0 group-hover:bg-blue-400 transition-colors" />
+              <div className="text-sm sm:text-base md:text-lg lg:text-xl text-slate-300 leading-relaxed text-balance break-words">{point}</div>
             </motion.div>
           ))}
         </motion.div>
