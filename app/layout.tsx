@@ -28,12 +28,19 @@ export default function RootLayout({
 }: {
   children: React.ReactNode
 }) {
-  return (
-    <html lang="en" className={`${inter.variable} ${orbitron.variable} antialiased`}>
-      <body className="bg-gradient-to-br from-slate-900 to-slate-950 text-white min-h-screen">
-        <div className="hs-logo-fixed" aria-hidden="true" />
-        {children}
-      </body>
-    </html>
-  )
+    return (
+      <html lang="en" className={`${inter.variable} ${orbitron.variable} antialiased`}>
+        <head>
+          <meta property="og:title" content="HawkShield - Wi-Fi Intrusion Prevention System" />
+          <meta property="og:description" content="AI-powered real-time Wi-Fi Intrusion Prevention System" />
+          <meta property="og:image" content="/public/logo.jpg" />
+          <meta property="og:type" content="website" />
+          <meta property="og:url" content="https://hawkshield.malshabib.dev" />
+        </head>
+        <body className="bg-gradient-to-br from-slate-900 to-slate-950 text-white min-h-screen">
+          <div className="hs-logo-fixed" aria-hidden="true" />
+          {children}
+        </body>
+      </html>
+    )
 }
