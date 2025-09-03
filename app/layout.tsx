@@ -110,6 +110,28 @@ export default function RootLayout({
         <meta name="format-detection" content="telephone=no" />
         <meta name="HandheldFriendly" content="true" />
         
+        {/* Traditional Open Graph Meta Tags */}
+        <meta property="og:title" content="HawkShield - AI-Powered Wi-Fi Intrusion Prevention System" />
+        <meta property="og:description" content="Revolutionary AI-powered real-time Wi-Fi defense system with machine learning-based threat detection and automated response. Protecting networks with 98%+ accuracy and <1s response time." />
+        <meta property="og:image" content="https://hawkshield.malshabib.dev/logo.jpg" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta property="og:image:type" content="image/jpeg" />
+        <meta property="og:image:alt" content="HawkShield - Wi-Fi Intrusion Prevention System" />
+        <meta property="og:url" content="https://hawkshield.malshabib.dev" />
+        <meta property="og:type" content="website" />
+        <meta property="og:site_name" content="HawkShield" />
+        <meta property="og:locale" content="en_US" />
+        
+        {/* Twitter Card Meta Tags */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:site" content="@hawkshield" />
+        <meta name="twitter:creator" content="@malshabib" />
+        <meta name="twitter:title" content="HawkShield - AI-Powered Wi-Fi Security" />
+        <meta name="twitter:description" content="Revolutionary AI-powered Wi-Fi defense system with 98%+ accuracy and <1s response time. Experience the future of network security." />
+        <meta name="twitter:image" content="https://hawkshield.malshabib.dev/logo.jpg" />
+        <meta name="twitter:image:alt" content="HawkShield - Wi-Fi Intrusion Prevention System" />
+        
         {/* Structured Data for Search Engines */}
         <script
           type="application/ld+json"
