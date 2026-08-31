@@ -1,11 +1,24 @@
 "use client"
 
 import { motion } from "framer-motion"
-import { Lightbulb, FolderOpen, RefreshCw, Database, FileText, MessageSquare } from "lucide-react"
+import { Lightbulb, FolderOpen, RefreshCw, Database, FileText, MessageSquare, Bird } from "lucide-react"
 
 export default function RAGSystemDiagram() {
   return (
     <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8 w-full">
+      {/* Saqr branding banner */}
+      <motion.div
+        className="lg:col-span-3 flex items-center justify-center gap-3 mb-1 sm:mb-2"
+        initial={{ opacity: 0, y: -10 }}
+        animate={{ opacity: 1, y: 0 }}
+      >
+        <div className="flex items-center gap-2 rounded-full border border-cyan-400/40 bg-cyan-400/10 px-4 py-1.5">
+          <Bird className="w-4 h-4 text-cyan-300" />
+          <span className="text-sm sm:text-base font-semibold text-cyan-300 orbitron">Saqr</span>
+          <span className="text-xs sm:text-sm text-slate-400">— HawkShield's AI Agent</span>
+        </div>
+      </motion.div>
+
       {/* Core Idea */}
       <motion.div
         className="space-y-3 sm:space-y-4"
@@ -125,7 +138,7 @@ export default function RAGSystemDiagram() {
             className="bg-gray-800/50 border border-purple-400/30 rounded-lg p-3 sm:p-4"
             whileHover={{ scale: 1.02 }}
           >
-            <span className="text-sm sm:text-base font-medium text-purple-400 block break-words">3. GPT (gpt-4o)</span>
+            <span className="text-sm sm:text-base font-medium text-purple-400 block break-words">3. LLM (via OpenRouter)</span>
             <p className="text-xs sm:text-sm text-gray-300 mt-1 break-words">Short, factual answers</p>
           </motion.div>
         </div>

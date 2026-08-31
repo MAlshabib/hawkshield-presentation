@@ -100,7 +100,7 @@ export default function ProblemStatement() {
       {/* One-line takeaway */}
       <div className="mt-6 rounded-lg border border-cyan-500/20 bg-gradient-to-r
                       from-cyan-400/10 to-blue-500/10 px-4 py-3 text-sm text-slate-200">
-        We need an adaptive, ML-driven IPS that runs on-device and detects anomalies in <span className="text-cyan-300 font-medium">sub-second</span>.
+        We need an adaptive, ML-driven IDS that runs on-device and detects anomalies in <span className="text-cyan-300 font-medium">sub-second</span>.
       </div>
     </div>
   )

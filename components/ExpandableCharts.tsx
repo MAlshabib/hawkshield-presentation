@@ -225,7 +225,7 @@ export default function ExpandableCharts() {
     <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
       {[
         { title: "Binary (LightGBM)", value: "Acc ~98.5%", subtitle: "F1 ~98%" },
-        { title: "Multi-class (6 types)", value: "Acc ~99.8%", subtitle: "F1 ~93%" },
+        { title: "Multi-class (6 types)", value: "Acc ~99.8%", subtitle: "F1 ~99.07%" },
         { title: "Latency", value: "< 1s", subtitle: "Real-time detect" },
         { title: "Decision", value: "LightGBM", subtitle: "Best accuracy/speed" },
       ].map((c, i) => (
@@ -511,7 +511,7 @@ export default function ExpandableCharts() {
               <div className="mb-3 text-base font-semibold text-cyan-300">Accuracy vs F1</div>
               <div className="grid grid-cols-2 gap-4">
                 <StatCard title="Binary (LightGBM)" value="Acc ~98.5%" subtitle="F1 ~98%" />
-                <StatCard title="Multi-class (LightGBM)" value="Acc ~93.9%" subtitle="F1 ~93%" />
+                <StatCard title="Multi-class (LightGBM)" value="Acc ~99.8%" subtitle="F1 ~99.07%" />
               </div>
               <div className="mt-3 text-xs text-slate-400">
                 Takeaway: LightGBM delivers the best accuracy/speed balance for real-time IPS.

@@ -21,6 +21,8 @@ import PreprocessingSteps from "./PreprocessingSteps"
 import ExpandableCharts from "./ExpandableCharts"
 import RAGSystemDiagram from "./RAGSystemDiagram"
 import ScopeEthics from "./ScopeEthics"
+import ProjectCost from "./ProjectCost"
+import BusinessModelCanvas from "./BusinessModelCanvas"
 import { Database, Shield, Eye, Cpu, Brain } from "lucide-react"
 import { useIsMobile } from "@/hooks/use-mobile"
 
@@ -73,26 +75,26 @@ export default function Slide({ slide, zoomArchitectureRef, onDrillChange }: Sli
       case "solution-flow":
         return (
           <FlowDiagram
-            title="ML-Powered Defense Flow"
+            title="ML-Powered Detection Flow"
             steps={[
               {
                 id: "detect",
                 title: "Detection",
-                description: "Binary & Multi-class ML models",
+                description: "Binary & Multi-class ML models (9 classes)",
                 icon: <Eye className="w-6 h-6 text-cyan-400" />,
                 color: "border-cyan-500/50",
               },
               {
                 id: "analyze",
-                title: "Analysis",
-                description: "100 attack packets/hour → prevention trigger",
+                title: "Confidence Gate",
+                description: "Dual-threshold check → only confident detections are logged",
                 icon: <Brain className="w-6 h-6 text-cyan-400" />,
                 color: "border-blue-500/50",
               },
               {
-                id: "defend",
-                title: "Defense",
-                description: "Automated Block/Deauth response",
+                id: "alert",
+                title: "Alert & Analyze",
+                description: "Logged to dashboard + queryable via Saqr",
                 icon: <Shield className="w-6 h-6 text-cyan-400" />,
                 color: "border-green-500/50",
               },
@@ -220,6 +222,12 @@ export default function Slide({ slide, zoomArchitectureRef, onDrillChange }: Sli
       case "rag-system":
         return <RAGSystemDiagram />
 
+      case "project-cost":
+        return <ProjectCost />
+
+      case "business-model":
+        return <BusinessModelCanvas />
+
       case "toc":
         return (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4 md:gap-6 mt-4 sm:mt-6 md:mt-8 lg:mt-12 max-h-[60vh] overflow-y-auto">
@@ -332,7 +340,7 @@ export default function Slide({ slide, zoomArchitectureRef, onDrillChange }: Sli
               headers: ["Model", "Task", "Accuracy", "F1-Score", "Latency"],
               rows: [
                 ["LightGBM", "Binary Classification", "~98.5%", "~98.0%", "<1s"],
-                ["LightGBM", "Multi-class Classification", "99.8%", "93.9%", "<1s"],
+                ["LightGBM", "Multi-class Classification", "99.8%", "99.07%", "<1s"],
                 ["Alternative", "Random Forest", "~95%", "~92%", "~2s"],
                 ["Alternative", "Neural Network", "~97%", "~94%", "~3s"],
               ],

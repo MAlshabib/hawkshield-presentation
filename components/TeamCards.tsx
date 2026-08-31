@@ -26,7 +26,7 @@ const teamMembers = [
     bgColor: "hover:bg-green-500/10",
   },
   {
-    name: "Lina",
+    name: "Lena",
     role: "Integration + 3D Prototype Case",
     icon: Cpu,
     color: "border-purple-500/50 hover:border-purple-400",
@@ -34,7 +34,7 @@ const teamMembers = [
   },
   {
     name: "Haya",
-    role: "RAG + Documentation",
+    role: "Saqr Agent + Documentation",
     icon: FileText,
     color: "border-cyan-500/50 hover:border-cyan-400",
     bgColor: "hover:bg-cyan-500/10",

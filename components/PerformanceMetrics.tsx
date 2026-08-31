@@ -30,7 +30,7 @@ export default function PerformanceMetrics() {
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
         <Metric label="Binary Accuracy" value="~98.5%" color="border-green-500/50" delay={0} />
         <Metric label="Multi-class Accuracy" value="99.8%" color="border-blue-500/50" delay={0.1} />
-        <Metric label="Macro F1-Score" value="93.9%" color="border-purple-500/50" delay={0.2} />
+        <Metric label="Macro F1-Score" value="99.07%" color="border-purple-500/50" delay={0.2} />
         <Metric label="Detection Latency" value="<1s" color="border-cyan-500/50" delay={0.3} />
       </div>
 
